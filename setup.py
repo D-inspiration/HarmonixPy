@@ -1,5 +1,5 @@
 """setup tools for package"""
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages # type: ignore
 
 setup(
     name="HarmonixPy",  # Package name (should be unique)
