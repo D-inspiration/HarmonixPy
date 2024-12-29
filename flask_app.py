@@ -82,7 +82,7 @@ class HarmonixPy:
     def run(self):
         """Install dependencies and start the Flask app."""
         self.install_dependencies()
-        self.app.run(debug=True, host="0.0.0.0", port=5003)
+        self.app.run(debug=True, host="0.0.0.0", port=5000)
 
     def create_default_files(self):
         """Create default static and template files if not exist."""

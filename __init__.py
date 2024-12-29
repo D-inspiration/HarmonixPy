@@ -1,3 +1,6 @@
+# harmonixpy/__init__.py
+__version__ = "0.0.2"
+
 from .flask_app import HarmonixPy as _HarmonixPy
 
 # Default class instance for easy access to HarmonixPy functions
