@@ -3,7 +3,7 @@ from setuptools import setup, find_packages # type: ignore
 
 setup(
     name="HarmonixPy",  # Package name (should be unique)
-    version="0.0.1",  # Versioning
+    version="0.0.2",  # Versioning
     packages=find_packages(),  # Automatically finds subpackages
     install_requires=[
         "flask",  # Add any core dependencies for your package
