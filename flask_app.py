@@ -82,7 +82,7 @@ class HarmonixPy:
     def run(self):
         """Install dependencies and start the Flask app."""
         self.install_dependencies()
-        self.app.run(debug=True, host="0.0.0.0", port=5000)
+        self.app.run(debug=True, host="0.0.0.0", port=5003)
 
     def create_default_files(self):
         """Create default static and template files if not exist."""
@@ -99,11 +99,16 @@ class HarmonixPy:
                 <head>
                     <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Dynamic Test Page</title>
+                    <title>Flask with External CSS and JS</title>
                 </head>
                 <body>
-                    <h1>Welcome to HarmonixPy</h1>
-                    <p>This is a test page with dynamic linking of CSS and JavaScript files.</p>
+                    <h1>Welcome to HarmonixPy!</h1>
+                    <p>This page uses an external CSS and JS file.</p>
+                    
+                    <!-- Button to trigger the change -->
+                    <button id="changeTextButton">Click me to change text</button>
+
+                    <!-- Linking the JS file -->
                 </body>
                 </html>
                 """)
@@ -113,21 +118,32 @@ class HarmonixPy:
             with open(self.css_files[0], 'w', encoding='utf-8') as css_file:
                 css_file.write("""
                 body {
-                    background-color: #f0f0f0;
-                    color: #333;
                     font-family: Arial, sans-serif;
+                    background-color: green;
+                    text-align: center;
+                    padding: 50px;
                 }
+
                 h1 {
-                    color: #007bff;
+                    color: yellow;
                 }
-                """)
+
+                p {
+                    color: blue;
+                }""")
 
         # Default JS content
         if not os.path.exists(self.js_files[0]):
             with open(self.js_files[0], 'w', encoding='utf-8') as js_file:
-                js_file.write("""
-                console.log('Hello, world!');
-                document.addEventListener('DOMContentLoaded', () => {
-                    console.log('DOM fully loaded and parsed.');
-                });
+                js_file.write("""document.addEventListener("DOMContentLoaded", function() {
+                                    // Get the button and h1 elements
+                                    const button = document.getElementById("changeTextButton");
+                                    const welcomeMessage = document.querySelector("h1");
+
+                                    // Event listener for button click
+                                    button.addEventListener("click", function() {
+                                        // Change the text content of the h1 element when button is clicked
+                                        welcomeMessage.textContent = "You clicked the button! The text has changed.";
+                                    });
+                                });
                 """)
